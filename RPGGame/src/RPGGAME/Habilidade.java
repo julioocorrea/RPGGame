@@ -56,7 +56,7 @@ public class Habilidade {
 	}
 
 	public void AtivarHabilidade(Personagem personagem) {
-		if (personagem.getEnergia() > this.getCustoDeEnergia()) {
+		if (personagem.getEnergia() >= this.getCustoDeEnergia()) {
 			personagem.setDanoFisico(personagem.getDanoFisico() + this.AumentoDoDanoFisico);
 			personagem.setDanoMagico(personagem.getDanoMagico() + this.AumentoDoDanoMagico);
 			personagem.setEnergia(personagem.getEnergia() - this.CustoDeEnergia);
@@ -66,7 +66,10 @@ public class Habilidade {
 	        System.out.println(personagem.toString());
 	        System.out.println("========================================================================\n");
 	        
-	        personagem.getMissao().AtualizarMissao("Use uma Habilidade", personagem);
+			if (!personagem.getMissao().getObjetivos().isEmpty()) {
+		        personagem.getMissao().AtualizarMissao("Use uma habilidade", personagem);
+			}
+
 	        System.out.println("========================================================================\n");
 		}
 		else {

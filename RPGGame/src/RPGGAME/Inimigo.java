@@ -12,27 +12,15 @@ public class Inimigo {
 	private int DanoMagico;
 	private List<Habilidade> Habilidade;
 	
-	public Inimigo(String nome, Habilidade habilidade) {
+	public Inimigo(String nome, Habilidade habilidade, int danoFisico, int danoMagico) {
 		this.Nome = nome;
 		this.Nivel = 1;
 		this.Saude = 100;
 		this.Energia = 100;
-		this.DanoFisico = 5;
-		this.DanoMagico = 5;
+		this.DanoFisico = danoFisico;
+		this.DanoMagico = danoMagico;
 		this.Habilidade = new ArrayList<>();
 		this.Habilidade.add(habilidade);
-		
-		
-        System.out.println("========================================================================");
-        System.out.println("        💀 Inimigo a Vista 💀");
-        System.out.println("========================================================================");
-        System.out.println("👺 Inimigo: " + this.Nome);
-        System.out.println("💊 Saúde: " + this.Saude);
-        System.out.println("⚡ Energia: " + this.Energia);
-        System.out.println("🗡️ Dano Físico: " + this.DanoFisico);
-        System.out.println("🔮 Dano Mágico: " + this.DanoMagico);
-        System.out.println("========================================================================\n\n");
-		
 	}
 	
 	public String getNome() {

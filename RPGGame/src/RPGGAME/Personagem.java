@@ -88,8 +88,8 @@ public class Personagem {
 		return this.Itens;
 	}
 
-	public void setItens(Item item) {
-		this.Itens.add(item);
+	public void setItens(List<Item> item) {
+		this.Itens = item;
 	}
 
 	public Missao getMissao() {
@@ -109,10 +109,10 @@ public class Personagem {
 	        System.out.println("========================================================================");
 		}
 	}
-	public void Caminhar(double X, double Y) {
-
-	}
 	
+	public void Caminhar(int posicao) {
+		posicao++;
+	}
 	
 	public String toString() {
 		return "🤴🏼 Personagem: " + this.getNome() + "\n"

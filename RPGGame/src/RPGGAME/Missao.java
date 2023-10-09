@@ -48,7 +48,8 @@ public class Missao {
 		this.Objetivos = objetivos;
 	}
 
-	public void IniciarMissao(Personagem personagem, Missao missao) {
+	public void IniciarMissao(Personagem personagem) {
+		Missao missao = new Missao(this.Titulo, this.Descricao, this.getObjetivos(), this.getRecompensas());
 		personagem.setMissao(missao);
         System.out.println("========================================================================");
 		System.out.println("📜 Missão " + missao.Titulo + " iniciada.");
@@ -60,25 +61,30 @@ public class Missao {
 	}
 	
 	public void CompletarMissao(Personagem personagem) {
-		System.out.println("Missão" + personagem.getMissao().getTitulo() + "concluida com sucesso!!");
+		List<Item> itensAtualizados = new ArrayList<>();
+		itensAtualizados = personagem.getItens();
+        System.out.println("========================================================================");
+		System.out.println("Missão " + personagem.getMissao().getTitulo() + " concluida com sucesso!!");
 		for(Item item : this.Recompensas){
-			personagem.setItens(item);
+			itensAtualizados.add(item);
 			System.out.println("Item " + item.getNome() + " adicionado no inventário.");
 		}
+        System.out.println("========================================================================");
+		personagem.setItens(itensAtualizados);
 	}
 	
 	public void AtualizarMissao(String objetivo, Personagem personagem) {
 		List<String> ObjetivosAtualizados = new ArrayList<>();
 		ObjetivosAtualizados = personagem.getMissao().getObjetivos();
 		ObjetivosAtualizados.remove(objetivo);
-		this.setObjetivos(ObjetivosAtualizados);
-		if (this.Objetivos.isEmpty()) {
+		personagem.getMissao().setObjetivos(ObjetivosAtualizados);
+        System.out.println("========================================================================");
+		System.out.println("📜 Objetivo " + objetivo + " concluido");
+		System.out.println("========================================================================\n\n");
+		
+		if (personagem.getMissao().getObjetivos().isEmpty()) {
 			CompletarMissao(personagem);
 		}
-		else {
-	        System.out.println("========================================================================");
-			System.out.println("📜 Objetivo " + objetivo + " concluido");
-			System.out.println("========================================================================\n\n");
-		}
+
 	}
 }
