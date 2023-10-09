@@ -52,7 +52,7 @@ public class Missao {
 		Missao missao = new Missao(this.Titulo, this.Descricao, this.getObjetivos(), this.getRecompensas());
 		personagem.setMissao(missao);
         System.out.println("========================================================================");
-		System.out.println("📜 Missão " + missao.Titulo + " iniciada.");
+		System.out.println("📜 " + missao.Titulo + " iniciada.");
         System.out.println("========================================================================");
         for (String objetivo : missao.getObjetivos()) {
         	System.out.println("🔰 " + objetivo);

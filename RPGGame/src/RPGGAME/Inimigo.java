@@ -82,7 +82,12 @@ public class Inimigo {
 	public void Atacar(Personagem personagem) {
 		if (personagem.getSaude() > this.DanoFisico) {
 			personagem.setSaude(personagem.getSaude() - this.DanoFisico);
-			personagem.setEnergia(personagem.getEnergia() - this.DanoMagico);
+			if (personagem.getEnergia() > this.DanoMagico) {
+				personagem.setEnergia(personagem.getEnergia() - this.DanoMagico);
+			}
+			else {
+				personagem.setEnergia(0);
+			}
 	        System.out.println("========================================================================");
 			System.out.println("👺🏹 Você foi atacado pelo " + this.Nome );
 	        System.out.println("========================================================================");
